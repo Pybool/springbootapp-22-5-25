@@ -1,0 +1,186 @@
+<div *ngIf="isVisible"
+	class="modal">
+	<div class="modal-content">
+        <div style="align-items: center;" class="flex-row-btw">
+            <h3 style="color:black;padding-left:20px">Transaction History</h3>
+            <div class="back-button-container">
+            
+                <button (click)="closeModal()"
+                    class="back-button">
+                    &larr;
+                </button>
+            </div>
+        </div>
+		
+
+
+
+		<div style="height: 100%;"
+			class>
+			<div class="flexify wow animate__animated animate__slideInLeft"
+				style="width: 100%; padding: 0px">
+				<div style="align-items: center;padding:10px; width:100%" class="flex-row-btw">
+                    <div style="width:45%;"
+					class="dropdown btn btn-two btn-arrow btn-filter">
+					Transaction Type
+					<ul class="dropdown-menu">
+						<li>
+							<a href="javascript:void(0)"
+								class>
+								Top rated Vendors
+							</a>
+						</li>
+
+
+					</ul>
+				</div>
+				<div style="width:45%;"
+					class="dropdown btn btn-two btn-arrow btn-filter">
+					Transaction Source
+					<ul class="dropdown-menu">
+						<li>
+							<a href="javascript:void(0)"
+								class>
+								Top rated Vendors
+							</a>
+						</li>
+
+
+					</ul>
+				</div>
+                </div>
+                
+
+
+
+				<div class="tranx-list tranx-list-stretch card card-bordered"
+					style="border-radius: 0px!important; width: 100%!important;height:70vh; overflow-y: auto;">
+					<ng-container *ngFor="let transaction of transactions">
+						<div class="tranx-item">
+							<div class="tranx-col">
+								<div class="tranx-info">
+									<div class="tranx-badge">
+										<span class="tranx-icon">
+											<img *ngIf="transaction?.payout"
+												alt
+												class="ETH"
+												style="width:40px"
+												src="{{transaction?.payout?.cryptoListingPurchase?.cryptoListing?.cryptoLogo}}">
+
+
+
+
+											<div *ngIf="!transaction?.payout && transaction.operationType==='credit'"
+												class="fund-inflow">
+												<svg class="arrow"
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 448 512">
+													<!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+													<path style="fill: green"
+														d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path>
+												</svg>
+											</div>
+											<div *ngIf="!transaction?.payout && transaction.operationType==='debit'"
+												class="fund-outflow">
+												<svg class="arrow"
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 448 512">
+													<!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+													<path style="fill: red"
+														d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path>
+												</svg>
+											</div>
+										</span>
+									</div>
+									<div class="tranx-data flex-col">
+										<div class="tranx-label">
+											<strong *ngIf="!transaction?.payout && transaction.operationType==='credit' && transaction.type !=='wallet-withdrawal'"
+												class="text-nowrap">
+												Transfer from {{transaction?.debitWalletAccountNo}}
+											</strong>
+											<strong *ngIf="!transaction?.payout && transaction.operationType==='debit' && transaction.type !=='wallet-withdrawal'"
+												class="text-nowrap">
+												Transfer to {{transaction?.creditWalletAccountNo}}
+											</strong>
+											<strong *ngIf="transaction?.payout && transaction.operationType==='credit' && transaction.type !=='wallet-withdrawal'"
+												class="text-nowrap">
+												Payout for {{transaction?.payout?.cryptoListingPurchase?.checkOutId}}
+											</strong>
+											<strong *ngIf="!transaction?.payout && transaction.operationType==='debit' && transaction.type ==='wallet-withdrawal'"
+												class="text-nowrap">
+												Withdrawal to bank account.
+											</strong>
+		
+											<strong *ngIf="!transaction?.payout && transaction.operationType==='credit' && transaction.type ==='wallet-withdrawal'"
+												class="text-nowrap">
+												Withdrawal reversal to wallet
+											</strong>
+										</div>
+
+
+
+
+										<div *ngIf="!transaction?.payout && transaction.operationType==='credit'"
+											class="currency-amount">
+											<div>
+												+{{user?.geoData?.currency?.symbol}}{{transaction?.amount | number:'1.2-2'}}
+											</div>
+										</div>
+										<div *ngIf="!transaction?.payout && transaction.operationType==='debit'"
+											class="currency-amount debit-text">
+											<div>
+												-{{user?.geoData?.currency?.symbol}}{{transaction?.amount | number:'1.2-2'}}
+											</div>
+										</div>
+										<div *ngIf="transaction?.payout && transaction.operationType==='credit'"
+											class="currency-amount">
+											<div>
+												+{{user?.geoData?.currency?.symbol}}{{transaction?.amount | number:'1.2-2'}}
+											</div>
+										</div>
+									</div>
+									<div class="tranx-date text-nowrap">
+										<div>
+											{{formatTimestamp(transaction?.createdAt)}}
+										</div>
+										<div class="text-green">Successful</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</ng-container>
+					<div *ngIf="transactions.length == 0"
+						style="text-align: center; color: black">
+						No results to display
+					</div>
+					<div class="show-more">
+						<button *ngIf="hasMore"
+							[disabled]="isLoading"
+							(click)="onLoadMore()"
+							class="btn btn-two btn-swirl">
+							<span *ngIf="isLoading">Loading...</span>
+							<span *ngIf="!isLoading">Show More</span>
+							<svg _ngcontent-ng-c149584285
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 448 512"
+								style="width: 18px; padding-left: 8px;">
+								<path _ngcontent-ng-c149584285
+									d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+									style="fill: #e275ff;"></path>
+							</svg>
+						</button>
+						<!-- Optionally, you can show a message when no more results are available -->
+						<div *ngIf="!hasMore && transactions.length > 0">
+							<p>
+								No more transactions to load.
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>

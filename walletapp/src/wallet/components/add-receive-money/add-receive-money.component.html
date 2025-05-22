@@ -1,0 +1,144 @@
+<div *ngIf="isVisible"
+	class="modal">
+	<div class="modal-content">
+		<div class="back-button-container float-left">
+            <button (click)="handleBackEvent()"
+                class="back-button">
+                &larr;
+            </button>
+        </div>
+        <div class="back-button-container float-right">
+            <button (click)="sharedService.terminateModals()"
+                class="back-button">
+                &times;
+            </button>
+        </div>
+
+
+		<div *ngIf="!cardFundingVisisble" style="background-image: url(/assets/_images/bg.svg);height: 100%;"
+			class>
+			<div class="flexify"
+				style="width: 100%; padding: 20px">
+				<div class="card top-card dark wow animate__animated animate__slideInLeft">
+					<div class="card-content">
+						<div class="tranx-list tranx-list-stretch"
+							style="border-radius: 0px!important; width: 100%!important;">
+							
+							<div class="tranx-item pl-10">
+								<div class="tranx-col dashed-border">
+									<div class="tranx-info">
+										<div class="tranx-badge">
+											<div class="tranx-icon">
+												<svg 
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 512 512">
+													<!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+													<path d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160l0 8c0 13.3 10.7 24 24 24l400 0c13.3 0 24-10.7 24-24l0-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224l-64 0 0 196.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512l448 0c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1L448 224l-64 0 0 192-40 0 0-192-64 0 0 192-48 0 0-192-64 0 0 192-40 0 0-192zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path>
+												</svg>
+											</div>
+										</div>
+										<div class="tranx-data flex-col">
+											<div class="tranx-label">
+												<strong class="currency-amount">
+													P2P Wallet Transfers
+												</strong>
+											</div>
+											<div class="text-nowrap">
+												<div style="color: #ccc;text-align: left;">
+													Receive wallet to wallet transfers from peers
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+                                
+							</div>
+                            <div style="width: 100%!important;">
+                                <div style="font-weight: 600;color: #ccc;font-size: 15px">Your Wallet Address</div>
+
+                                <div  style="font-size: 32px;font-weight: 700;color:black;">{{wallet?.walletAccountNo! | formatNumbers}}</div>
+                            </div>
+                            <div style="align-items: center;width: 100%!important;margin-top:20px" class="flex-row-btw">
+                                <button (click)="copyTextToClipBoard(wallet?.walletAccountNo!)" class="btn btn-two">Copy Wallet</button>
+                                <button (click)="setContentUrl()" class="btn btn-two">Share Details</button>
+                            </div>
+						</div>
+
+
+
+					</div>
+				</div>
+
+                <div (click)="continueWithCardFunding()" class="tranx-item card">
+                    <div  class="tranx-col">
+                        <div class="tranx-info">
+                            <div class="tranx-badge">
+                                <div class="tranx-icon">
+                                    <svg 
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512">
+                                        <!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+                                        <path d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160l0 8c0 13.3 10.7 24 24 24l400 0c13.3 0 24-10.7 24-24l0-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224l-64 0 0 196.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512l448 0c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1L448 224l-64 0 0 192-40 0 0-192-64 0 0 192-48 0 0-192-64 0 0 192-40 0 0-192zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="tranx-data flex-col">
+                                <div class="tranx-label">
+                                    <strong class="currency-amount">
+                                        Fund Account Via Card.
+                                    </strong>
+                                </div>
+                                <div class="text-nowrap">
+                                    <div style="color: #ccc;text-align: left;">
+                                        Add money via Master or Visa cards
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="tranx-item card disabled">
+                    <div class="tranx-col">
+                        <div class="tranx-info">
+                            <div class="tranx-badge">
+                                <div class="tranx-icon">
+                                    <svg 
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512">
+                                        <!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+                                        <path d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160l0 8c0 13.3 10.7 24 24 24l400 0c13.3 0 24-10.7 24-24l0-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224l-64 0 0 196.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512l448 0c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1L448 224l-64 0 0 192-40 0 0-192-64 0 0 192-48 0 0-192-64 0 0 192-40 0 0-192zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="tranx-data flex-col">
+                                <div class="tranx-label">
+                                    <strong class="currency-amount">
+                                        Bank Transfer
+                                    </strong>
+                                </div>
+                                <div class="text-nowrap">
+                                    <div style="color: #ccc;text-align: left;">
+                                        Fund Wallet with Bank Transfer
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+			</div>
+		</div>
+
+        <app-card-funding 
+            *ngIf="cardFundingVisisble" 
+            [wallet]="wallet" 
+            [isVisible]="cardFundingVisisble" 
+            (close)="handleBackEvent()">
+        </app-card-funding>
+	</div>
+</div>
+
+
+<app-share-modal *ngIf="contentUrl" (shareClose)="handleShareClose($event)" [title]="'Share Account Information'" [contentUrl]="contentUrl"></app-share-modal>

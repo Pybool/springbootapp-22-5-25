@@ -1,0 +1,41 @@
+<div class="v-container">
+    <div class="card bounce"> 
+        <div class="card-inner">
+            <div class="front">
+                <img src="{{virtualCard.logo}}" class="map-img">
+                <div class="card-flex-row">
+                    <img src="{{virtualCard.logo}}" style="width:40px;height:40px" width="40px">
+                    <img src="{{virtualCard.toprightImg}}" style="width:40px;height:40px" width="40px">
+                </div>
+                <div class="card-flex-row card-no">
+                    <ng-container *ngFor="let part of formatBin(virtualCard.bin)">
+                        <p class="bin">{{ part }}</p>
+                    </ng-container>
+                    
+                </div>
+                <div class="card-flex-row card-holder">
+                    <p>CARD HOLDER</p>
+                    <p>VALID TILL</p>
+                </div>
+                <div class="card-flex-row name">
+                    <p>{{virtualCard.name}}</p>
+                    <p>{{virtualCard.expiration}}</p>
+                </div>
+            </div>
+            <div class="back">
+                <img src="{{virtualCard.rearImg}}" class="map-img">
+                <div class="bar"></div>
+                <div class="card-flex-row card-cvv">
+                    <div>
+                        <img src="{{virtualCard.toprightImg}}">
+                    </div>
+                    <p>824</p>
+                </div>
+                <!-- <div class="card-flex-row signature">
+                    <p>CUSTOMER SIGNATURE</p>
+                    <img src="https://i.ibb.co/WHZ3nRJ/visa.png" width="80px">
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

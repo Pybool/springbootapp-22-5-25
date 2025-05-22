@@ -1,0 +1,384 @@
+<div style="background: white; position: relative!important; margin:auto"
+	class="dashboard container">
+	<div class="flexify top-cards"
+		style="width: 100%; padding: 20px">
+		<div style="cursor:auto" class="card top-card dark">
+
+			<div class="card-content">
+				<div style="width: 100%;"
+					class="flex-row-btw-wrap">
+					<div style="background: white;"
+						class="card-icon-wrapper">
+						<span class="icon">💰</span>
+					</div>
+					<strong style="color:white;text-transform: capitalize;">
+						{{wallet?.currency}} ({{wallet?.currencySymbol?.toUpperCase()}}) account
+					</strong>
+				<ng-container *ngIf="wallet?.account?.username?.trim() !== ''; else fallback">
+						<h6 style="color:white; text-transform: capitalize;">
+							Hi {{ wallet?.account?.username?.toLowerCase() }}
+						</h6>
+					</ng-container>
+
+
+					<ng-template #fallback>
+						<h6 style="color:white;">Hi there!</h6>
+					</ng-template>
+
+
+				</div>
+				<div style="align-items: center;width: 100%"
+					class="flex-row-btw">
+					<div style="margin-top: 10px">
+						<div style="font-size: 17px; font-weight: 500;color: #9b9797;">Current Balance</div>
+						<h3 *ngIf="!hideBalance && wallet?.currencyStorageUnitSymbol=='naira'"
+							style="color:white!important"
+							class="responsive-text">
+							{{wallet?.currencySymbol}}{{wallet.balance!  | number:'1.2-2'}}
+						</h3>
+						<h3 *ngIf="!hideBalance && wallet?.currencyStorageUnitSymbol=='kobo'"
+							style="color:white!important"
+							class="responsive-text">
+							{{wallet?.currencySymbol}}{{(wallet.balance!/100)!  | number:'1.2-2'}}
+						</h3>
+						<h3 *ngIf="hideBalance"
+							style="color: white">
+							<strong>********</strong>
+						</h3>
+						<div style="font-size: 17px; font-weight: 500;color: #9b9797;">Wallet</div>
+						<h5 style="cursor:pointer" (click)="copyTextToClipBoard(wallet.walletAccountNo!)"
+							class="account-no">
+							{{wallet?.walletAccountNo}}&nbsp;
+							<sup>
+								<svg style="width: 17px"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 448 512">
+									<path style="fill: #ccc;"
+										d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z">
+									</path>
+								</svg>
+							</sup>
+						</h5>
+
+					</div>
+					<div class="wallet-actions wallet-actions-xl">
+						<div (click)="toggleTransferModal()"
+							class="card">
+							<svg xmlns="http://www.w3.org/2000/svg"
+								width="30"
+								height="30"
+								fill="none"
+								viewBox="0 0 24 25"
+								id="retweet">
+								<rect width="24"
+									height="24"
+									y=".135"
+									fill="url(#paint0_linear_302_4437)"
+									rx="8"></rect>
+								<path fill="#fff"
+									fill-rule="evenodd"
+									d="M8.40208 7H15.9261C17.3059 7 18.4245 8.11858 18.4245 9.49842V13.4245H20L16.9968 16.4277L13.9937 13.4245H15.5692V9.85533C15.5692 9.65822 15.4094 9.49842 15.2122 9.49842H10.4008L8.40208 7ZM7.00317 7.56605L10.0063 10.5692H8.43084V14.1384C8.43084 14.3355 8.59064 14.4953 8.78775 14.4953H13.5992L15.5979 16.9937H8.07392C6.69409 16.9937 5.5755 15.8752 5.5755 14.4953V10.5692H4L7.00317 7.56605Z"
+									clip-rule="evenodd"></path>
+								<defs>
+									<linearGradient id="paint0_linear_302_4437"
+										x1="0"
+										x2="24"
+										y1="12.135"
+										y2="12.135"
+										gradientUnits="userSpaceOnUse">
+										<stop stop-color="#ED6D6B"></stop>
+										<stop offset="1"
+											stop-color="#F0B076"></stop>
+									</linearGradient>
+								</defs>
+							</svg>
+							<span>Transfer</span>
+						</div>
+						<div (click)="toggleAddMoneyOrReceiveModal()"
+							class="card">
+							<img style="width: 30px; height: 30px;"
+								src="/assets/_images/money.png">
+							<span>Fund/Receive</span>
+						</div>
+						<div style="opacity: 0.4; pointer-events: none!important;" (click)="toggleWithdrawMoneyModal()"
+							class="card">
+							<img style="width: 30px; height: 30px;"
+								src="/assets/_images/cash-withdrawal.png">
+							<span>Withdraw</span>
+						</div>
+					</div>
+					<img style="width:130px; border-radius: 20px;"
+						src="/assets/_images/2868_R1NUIEpPUyAwNjQtNDE.jpg">
+				</div>
+				<div style="width: 100%;"
+					class="flex-row-btw">
+					<div class="flex-row-btw"
+						style="margin-top: 10px;align-items: center;width: 100%">
+						<button (click)="toggleAddMoneyOrReceiveModal()"
+							style="gap: 13.5px;"
+							class="btn btn-two flex-row-btw">
+							<svg style="width: 15px; height: 15px"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 448 512">
+								<path style="fill: white"
+									d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z">
+								</path>
+							</svg>
+							<span>Add Funds</span>
+						</button>
+						<a (click)="toggleBalanceVisibility()"
+							class="flex-row-btw"
+							href="javascript:void(0)"
+							style="font-weight: 500;align-items: center;gap: 5px;">
+							<svg *ngIf="!hideBalance"
+								class="eye-slash"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 640 512">
+								<!-- !Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+								<path style="fill: #ccc"
+									d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z"></path>
+							</svg>
+							<svg *ngIf="hideBalance"
+								class="eye-slash"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 576 512">
+								<!-- !Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+								<path style="fill: steelblue"
+									d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"></path>
+							</svg>
+							<span *ngIf="!hideBalance">Hide Balance</span>
+							<span *ngIf="hideBalance">Show Balance</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="three-dots">
+			<div class="dot active-dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+		</div>
+
+
+
+		<div class="wallet-actions wallet-actions-xs">
+			<div (click)="toggleTransferModal()"
+				class="card dark">
+				<svg xmlns="http://www.w3.org/2000/svg"
+					width="30"
+					height="30"
+					fill="none"
+					viewBox="0 0 24 25"
+					id="retweet">
+					<rect width="24"
+						height="24"
+						y=".135"
+						fill="url(#paint0_linear_302_4437)"
+						rx="8"></rect>
+					<path fill="#fff"
+						fill-rule="evenodd"
+						d="M8.40208 7H15.9261C17.3059 7 18.4245 8.11858 18.4245 9.49842V13.4245H20L16.9968 16.4277L13.9937 13.4245H15.5692V9.85533C15.5692 9.65822 15.4094 9.49842 15.2122 9.49842H10.4008L8.40208 7ZM7.00317 7.56605L10.0063 10.5692H8.43084V14.1384C8.43084 14.3355 8.59064 14.4953 8.78775 14.4953H13.5992L15.5979 16.9937H8.07392C6.69409 16.9937 5.5755 15.8752 5.5755 14.4953V10.5692H4L7.00317 7.56605Z"
+						clip-rule="evenodd"></path>
+					<defs>
+						<linearGradient id="paint0_linear_302_4437"
+							x1="0"
+							x2="24"
+							y1="12.135"
+							y2="12.135"
+							gradientUnits="userSpaceOnUse">
+							<stop stop-color="#ED6D6B"></stop>
+							<stop offset="1"
+								stop-color="#F0B076"></stop>
+						</linearGradient>
+					</defs>
+				</svg>
+				<span>Transfer</span>
+			</div>
+			<div (click)="toggleAddMoneyOrReceiveModal()"
+				class="card dark">
+				<img style="width: 30px; height: 30px;"
+					src="/assets/_images/money.png">
+				<span>Receive</span>
+			</div>
+			<div (click)="toggleWithdrawMoneyModal()"
+				class="card dark">
+				<img style="width: 30px; height: 30px;"
+					src="/assets/_images/cash-withdrawal.png">
+				<span>Withdraw</span>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="recent-transactions">
+		<div style="align-items: center;margin-bottom:30px; padding: 20px;background: white;"
+			class="flex-row-btw">
+			<div class="flex-row-start">
+				<h5 style="color: black; margin-bottom:0px">Recent transations</h5>
+				<div *ngIf="isLoading" class="nano-spinner-black"></div>
+			</div>
+			
+			<!-- <a (click)="toggleTransactionHistoryModal()"
+				style="font-weight: 700;"
+				href="javascript:void(0)">
+				View All
+			</a> -->
+		</div>
+		<div class="tranx-list tranx-list-stretch card card-bordered"
+			style="border-radius: 0px!important; width: 100%!important;box-shadow:none!important">
+			<ng-container *ngFor="let transaction of transactions">
+				<div class="tranx-item">
+					<div class="tranx-col">
+						<div class="tranx-info">
+							<div class="tranx-badge">
+								<span class="tranx-icon">
+									
+
+									<div *ngIf="transaction.operationType==='CREDIT'"
+										class="fund-inflow">
+										<svg class="arrow"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 448 512">
+											<!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+											<path style="fill: green"
+												d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path>
+										</svg>
+									</div>
+									<div *ngIf="transaction.operationType==='DEBIT'"
+										class="fund-outflow">
+										<svg class="arrow"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 448 512">
+											<!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+											<path style="fill: red"
+												d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path>
+										</svg>
+									</div>
+								</span>
+							</div>
+							<div class="tranx-data flex-col">
+								<div class="tranx-label">
+									<strong *ngIf="transaction.operationType==='CREDIT' && transaction.type ==='WALLET_TRANSFER'"
+										class="text-nowrap">
+										Incoming Transfer from {{transaction?.debitWalletAccountNo}}
+									</strong>
+									<strong *ngIf="transaction.operationType==='DEBIT' && transaction.type ==='WALLET_TRANSFER'"
+										class="text-nowrap">
+										Outgoing Transfer to {{transaction?.creditWalletAccountNo}}
+									</strong>
+									<strong *ngIf="transaction.operationType==='debit' && transaction.type ==='wallet-withdrawal' && transaction.type !=='direct-topup'"
+										class="text-nowrap">
+										Withdrawal to bank account.
+									</strong>
+									<strong *ngIf="transaction.operationType==='CREDIT' && transaction.type ==='DIRECT_TOPUP'"
+										class="text-nowrap">
+										Wallet Topup Via Card
+									</strong>
+
+									<strong *ngIf="!transaction?.payout && transaction.operationType==='credit' && transaction.type ==='wallet-withdrawal'"
+										class="text-nowrap">
+										Withdrawal reversal to wallet
+									</strong>
+								</div>
+
+								<!-- Division by 100 to convert to naira from kobo -->
+
+								<div *ngIf="transaction.operationType==='CREDIT'"
+									class="currency-amount">
+									<div>
+										+{{wallet?.currencySymbol}}{{transaction?.amount/100 | number:'1.2-2'}}
+									</div>
+								</div>
+								<div *ngIf="transaction.operationType==='DEBIT'"
+									class="currency-amount debit-text">
+									<div>
+										-{{wallet?.currencySymbol}}{{transaction?.amount/100 | number:'1.2-2'}}
+									</div>
+								</div>
+								<div *ngIf="transaction?.payout && transaction.operationType==='CREDIT'"
+									class="currency-amount">
+									<div>
+										+{{wallet?.currencySymbol}}{{transaction?.amount/100 | number:'1.2-2'}}
+									</div>
+								</div>
+								<small>Previous Balance: {{wallet?.currencySymbol}}{{transaction?.priorBalance!/100 | number:'1.2-2'}}</small>
+							</div>
+
+
+
+							<div class="tranx-data flex-col xl-only">
+								<div style="text-align: left;font-weight:700">
+									{{transaction?.reference || 'N/A'}}
+								</div>
+							</div>
+							<div class="tranx-data flex-col xl-only">
+								<div [ngStyle]="{'color': transaction?.operationType === 'debit' ? 'red' : transaction?.operationType === 'credit' ? 'green' : 'black'}"
+									style="text-transform: capitalize; text-align: left;font-weight:700">
+									{{ transaction?.operationType }}
+								</div>
+
+
+
+							</div>
+							<div class="tranx-data flex-col xl-only">
+								<div style="text-transform: capitalize; text-align: left;font-weight:700">
+									{{transaction?.type.replaceAll('-', " ")}}
+								</div>
+							</div>
+							<div class="tranx-date text-nowrap">
+								<div>
+									{{formatTimestamp(transaction?.createdAt)}}
+								</div>
+								<div class="text-green">Successful</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-container>
+			<div *ngIf="transactions.length == 0"
+				style="text-align: center; color: black">
+				No results to display
+			</div>
+			<div class="show-more">
+				<button *ngIf="hasMore"
+					[disabled]="isLoading"
+					(click)="onLoadMore()"
+					class="btn btn-two btn-swirl">
+					<span *ngIf="isLoading">Loading...</span>
+					<span *ngIf="!isLoading">Show More</span>
+					<svg _ngcontent-ng-c149584285
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 448 512"
+						style="width: 18px; padding-left: 8px;">
+						<path _ngcontent-ng-c149584285
+							d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+							style="fill: #e275ff;"></path>
+					</svg>
+				</button>
+				<div *ngIf="!hasMore && transactions.length > 0">
+					<p>
+						No more transactions to load.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<app-loading-spinner [isPartial]="true" [blurFactor]="'2px'" [isLoading]="isLoading"></app-loading-spinner>
+</div>
+
+<app-transfers *ngIf="canShow" [wallet]="wallet"
+	[isVisible]="transferIsVisible"
+	(close)="handleBackEvent($event)"></app-transfers>
+<app-add-receive-money *ngIf="canShow" [wallet]="wallet"
+	[isVisible]="addMoneyIsVisible"
+	(close)="handleBackEvent($event)"></app-add-receive-money>
+<app-transaction-history *ngIf="canShow" [isVisible]="transactionHistoryIsVisible"></app-transaction-history>
+<app-withdrawal *ngIf="canShow" [wallet]="wallet"
+	[isVisible]="withdrawMoneyIsVisible"
+	(close)="handleBackEvent($event)"></app-withdrawal>

@@ -1,0 +1,57 @@
+<div style="background-color: #010314;"
+	class="container">
+	<div *ngIf="notificationType" class="row justify-content-center">
+		<div class="col-md-5">
+			<div class="message-box _success">
+				<div class="checkmark">
+					<svg version="1.1"
+						id="Layer_1"
+						xmlns="http://www.w3.org/2000/svg"
+						:xmlns:xlink="http://www.w3.org/1999/xlink"
+						x="0px"
+						y="0px"
+						viewBox="0 0 161.2 161.2"
+						enable-background="new 0 0 161.2 161.2"
+						:xml:space="preserve">
+						<circle class="circle"
+							fill="none"
+							stroke="#33b057"
+							stroke-width="7"
+							stroke-miterlimit="10"
+							cx="80.6"
+							cy="80.6"
+							r="62.1"></circle>
+						<polyline class="icon"
+							fill="none"
+							stroke="#33b057"
+							stroke-width="7"
+							stroke-linecap="round"
+							stroke-miterlimit="10"
+							points="113,52.8 74.1,108.4 48.2,86.4">
+						</polyline>
+					</svg>
+				</div>
+				<h2>
+					Your payment was successful
+				</h2>
+				<p>
+					Thank you for your payment. we will
+					<br>
+					be in contact with more details shortly
+				</p>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<div *ngIf="!notificationType" class="row justify-content-center">
+		<div class="col-md-5">
+			<div class="message-box _success _failed">
+				<i class="fa fa-times-circle"
+					aria-hidden="true"></i>
+				<h2>Your payment failed</h2>
+				<p>Try again later</p>
+			</div>
+		</div>
+	</div>
+</div>

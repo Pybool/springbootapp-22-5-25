@@ -1,0 +1,84 @@
+<section style="margin-bottom: 60px;width:40%" class="container mx-auto">
+  <article style="width:100%" class="half">
+    <div style="flex-direction: column-reverse; align-items: start;width:100%" class="flex-row">
+      <h1 style="text-transform: capitalize; padding:20px; background-color: black;color:white!important; width: 100%">Verify Your Account</h1>
+
+    </div>
+    <div class="content">
+      <div class="signin-cont cont">
+        <form class="">
+          <div class="mx-auto">
+            <p style="text-align: center; font-size: 20px;" class="mx-auto" class="pin-prompt">
+              Please enter the code sent to your email address to complete your onboarding process
+            </p>
+          </div>
+          <app-otp-input [ngModelOptions]="{standalone: true}" #input="ngModel" [(ngModel)]="data" />
+          <br />
+
+          <div style="justify-content: center;" class="mx row">
+            <button [disabled]="data.length < 4" style="background: rgb(37, 26, 86) !important; width: 150px; color: white" (click)="submit()"
+              class="btn black-btn">
+              <div *ngIf="showSpinner" class="spinner-container">
+                <div class="spinner"></div>
+              </div>
+
+              Submit
+            </button>
+
+            <!-- <p class="mx-auto" style="text-align: center;margin-top: 20px;" *ngIf="showSpinner">Your instagram post request is being processed</p> -->
+            <p *ngIf="pinVerificationMsg=='unauthorise'" class="mx-auto"
+              style="color:rgb(200, 169, 229);text-align: center;margin-top: 20px;"><fa-icon [icon]="faLock"></fa-icon>
+              Your authorization pin is invalid</p>
+            <p *ngIf="pinVerificationMsg=='error'" class="mx-auto"
+              style="color:red;text-align: center;margin-top: 20px;font-size: 20px;"><fa-icon
+                [icon]="faExclamationTriangle"></fa-icon> Something went wrong, please try again later</p>
+          </div>
+          <div class="spinner-row">
+            <div *ngIf="showOtpSpinner" class="spinner"></div>
+            <div class="otp-link-text"><a  href="javascript:void(0)" (click)="resendOtp()">{{otpText}}</a></div>
+          </div>
+          </form>
+      </div>
+    </div>
+
+  </article>
+  <!-- <div style="margin-top: 20vh" class="half bg"></div> -->
+</section>
+
+
+<div class="footer-content">
+  <hr class="divider">
+
+  <p>
+    <span><b>IMPORTANT:</b></span> This information has been
+    prepared for distribution over the internet and without
+    taking into account the investment objectives, financial
+    situation and particular needs of any particular person.
+    Crygoca Limited (trading as CRYGOCA) and
+    its subsidiaries make no recommendations as to the merits of
+    any financial product referred to in the website, email or
+    its related websites. Please read our
+    <a href="javascript:void(0)" target="_blank">Product Disclosure
+      Statement</a>
+    and our
+    <a href="javascript:void(0)" target="_blank">Financial Services Guide</a>.
+  </p>
+  <p>
+    <span><b>DISCLAIMER:</b></span> CRYGOCA makes no warranty,
+    express or implied, concerning the suitability,
+    completeness, quality or exactness of the information and
+    models provided in this website. Read
+    <a href="javascript:void(0)" target="_blank">full disclaimer</a>
+    . CRYGOCA provides international money transfer services to
+    private clients and business customers. Use our free
+    currency converter, exchange rate charts, economic calendar,
+    in-depth currency news and updates and benefit from
+    competitive exchange rates and outstanding customer service.
+  </p>
+  <p>
+    CRYGOCA is regulated in United Kingdom by ASIC . Read our
+    <a href="javascript:void(0)" target="_blank">Money Laundering Statement</a>
+    and
+    <a href="javascript:void(0)" target="_blank">Privacy Policy</a>.
+  </p>
+</div>

@@ -1,0 +1,122 @@
+.otp {
+  width: 12% !important;
+  /* height: 95px !important; */
+  font-weight: 800 !important;
+  font-size: 32px !important;
+  color: black!important;
+  box-shadow: none !important;
+  padding: 0px!important;
+  text-align: center!important;
+}
+
+
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid darkgray!important;
+  border-radius: 0px!important;
+  color: white !important;
+}
+
+input:focus {
+  border: none!important;
+  outline: none!important;
+  background: transparent;
+  border-left: 1px solid transparent !important;
+  border-right: 1px solid transparent !important;
+  border-top: 1px solid transparent !important;
+  border-bottom: 1px solid slateblue!important;
+  border-radius: 0px;
+  color: black !important;
+  padding-left: 20px;
+}
+
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px !important;
+  /* margin-top: 30px !important; */
+}
+
+:host {
+  display: flex;
+  gap: 0.3em;
+  font-size: 24px;
+}
+
+input:focus {
+  outline: 0;
+  border-color: skyblue;
+  box-shadow: 0 0 0 0.1em skyblue;
+}
+
+input:disabled {
+  border-color: #eee;
+}
+
+/* Extra Small Devices, Phones (0px to 599px) */
+@media screen and (max-width: 599px) {
+
+  .opt {
+    width: 100% !important;
+    height: 65px !important;
+    font-weight: 800 !important;
+    font-size: 32px !important;
+    color: black!important;
+    border: 2px solid orangered !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    text-align: center!important;
+    padding: 0px!important;
+  }
+
+  .flex-row {
+    gap: 5px !important;
+    margin-top: 30px !important;
+  }
+  .msg {
+    width: 366px;
+    color: var(--Text-Bold, #3d3d3d);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+
+/* Small Devices, Larger Phones (600px to 767px) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  /* Styles for larger phones */
+  .opt {
+    width: 100% !important;
+    height: 65px !important;
+    font-weight: 800 !important;
+    font-size: 32px !important;
+    color: black!important;
+    border: 2px solid orangered !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    text-align: center!important;
+    padding: 0px!important;
+  }
+
+  .flex-row {
+    gap: 5px !important;
+    margin-top: 30px !important;
+  }
+  .msg {
+    width: 366px;
+    color: var(--Text-Bold, #3d3d3d);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

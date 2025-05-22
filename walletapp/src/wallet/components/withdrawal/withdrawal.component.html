@@ -1,0 +1,81 @@
+<div *ngIf="isVisible"
+	class="modal">
+	<div class="modal-content">
+		<div class="flex-row-btw">
+			<div class="back-button-container float-left">
+				<button (click)="closeModal()"
+					class="back-button">
+					&larr;
+				</button>
+			</div>
+			<div class="back-button-container float-right">
+				<button (click)="sharedService.terminateModals()"
+					class="back-button">
+					&times;
+				</button>
+			</div>
+		</div>
+        <div *ngIf="!showWithdrawalOtp"
+			class="send-money-container">
+			<div class="profile-section">
+				<img  src="{{serverUrl}}{{user?.avatar}}"
+					alt=""
+					class="profile-image">
+                <!-- <img *ngIf="user?.provider==='GOOGLE'" src="{{user?.avatar}}"
+					alt=""
+					class="profile-image"> -->
+                <h3 style="color:black">
+                    {{user.bankInfo?.accountName}}
+                </h3>
+				<p style="text-transform: capitalize;">
+					{{user?.geoData?.currency?.name}} ({{user?.geoData?.currency?.code?.toUpperCase()}}) account
+				</p>
+                <p *ngIf="!user.bankInfo?.branch" style="font-size: 18px;">
+                    <strong>{{user.bankInfo?.bank?.name}}</strong>
+                </p>
+                <p *ngIf="user.bankInfo?.branch">
+                    <strong>{{user.bankInfo?.branch?.branch_name}}</strong>
+                </p>
+				<p>
+					<label>Account Number:</label>&nbsp;<strong>{{user.bankInfo?.accountNumber}}</strong>
+				</p>
+                <p *ngIf="!user.bankInfo?.branch">
+					<label>Swift Code:</label>&nbsp;<strong>{{user.bankInfo?.swiftCode}}</strong>
+				</p>
+                <p *ngIf="user.bankInfo?.branch">
+					<label>Swift Code:</label>&nbsp;<strong>{{user.bankInfo?.branch?.swift_code}}</strong>
+				</p>
+
+                <p *ngIf="user?.geoData.code === 'US'">
+					<label>Routing Number:</label>&nbsp;<strong>{{user.bankInfo?.routingNumber}}</strong>
+				</p>
+			</div>
+			<div class="account-section" style="margin:20px">
+				<h5 style="color:black">
+					Withdrawal to bank account
+				</h5>
+				<div class="input-container">
+					<input
+					  [(ngModel)]="amount"
+					  [value]="amount"
+					  placeholder="Enter amount to withdraw"
+					  id="amount"
+					  type="text"
+					/>
+					<span class="input-prefix"><strong>{{ user.geoData.code }} {{ user.geoData.currency.symbol }}</strong></span>
+				  </div>
+				  
+				  
+				<button [disabled]="!amount || amount==0"
+					[class.disabled]="!amount || amount==0"
+					(click)="buildTransferPayload()"
+					style="margin-top: 30px;"
+					class="btn btn-two send-button flex-row-center">
+					<div *ngIf="showSpinner" class="micro-spinner"></div>
+					<div>Proceed</div>
+				</button>
+			</div>
+        </div>
+        <app-withdrawal-otp-auth style="padding:20px" *ngIf="showWithdrawalOtp" [withdrawalPayload]="withdrawalPayload"></app-withdrawal-otp-auth>
+    </div>
+</div>

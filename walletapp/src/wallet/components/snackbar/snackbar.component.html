@@ -1,0 +1,26 @@
+
+<div class="snack-bar" *ngIf="visible">
+    <span>{{ message }}</span>
+    <button class="close-btn" (click)="hide()">✖</button>
+</div>
+
+<div class="icon-snack-bar" *ngIf="visibleWithIcon">
+  <div [innerHtml]="svgString"></div>
+  <span style="margin-left: 10px;">{{ message }}</span>
+  <button class="close-btn" (click)="hide()">✖</button>
+</div>
+
+<div class="icon-snack-bar" *ngIf="visiblemsg">
+  <div [innerHtml]="svgString"></div>
+  <div style="max-height: 60vh; overflow-y: auto;">
+    <pre style="margin-left: 10px;">{{ message }}</pre>
+  </div>
+  <button class="close-btn" (click)="hide()">✖</button>
+</div>
+
+  
+<div class="err-snack-bar" *ngIf="errVisible">
+  <span>{{ message }}</span>
+  <button class="close-btn" (click)="hide()">✖</button>
+</div>
+  

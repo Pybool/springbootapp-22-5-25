@@ -1,0 +1,772 @@
+/* You can add global styles to this file, and also import other style files */
+
+html {
+    scroll-behavior: smooth !important;
+  }
+  
+  body {
+    font-size: 14px;
+    font-family: 'Hind Siliguri', sans-serif!important;
+    // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif!important;
+    -webkit-font-smoothing: antialiased!important;
+    -moz-osx-font-smoothing: grayscale!important;
+    background: whitesmoke!important;
+  }
+  
+  .tranx-item{
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    // border-top: 1px solid #ccc;
+    // border-bottom: 1px solid #ccc;
+  }
+  
+  app-cryptodropdown > div.ipv_selected-item>div.dropdown-content{
+    position: relative!important;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+  
+  div.dropdown.ipv_selected-item{
+    padding: 0px !important;
+      overflow: auto;
+      width: 100%;
+      height: 100%!important;
+      border: 1px solid #ccc!important;
+      border-radius: 4px!important;
+  }
+  
+  .flex-row {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+  
+  .flex-col-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px
+  }
+  
+  .highlight {
+    background-color: yellow;  /* Highlight color */
+    font-weight: bold;  /* Optional: Make text bold */
+    color: black;  /* Optional: Change the text color */
+  }
+  
+  .gap-10 {
+    gap: 20px;
+  }
+  
+  .hero-countdown-wrap {
+    background: var(--tg-black2);
+    border-radius: 16px;
+    text-align: left;
+    padding: 30px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  
+  code{
+    color: orange!important;
+  }
+  
+  .notes{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  .search-bar {
+    width: 100% !important;
+    color: black!important;
+    padding-right: 30px; /* Add padding for the spinner */
+  }
+  
+  
+  .calc {
+    width: 49% !important;
+  }
+  
+  .roadmap-content {
+    padding: 40px 20px 30px !important;
+  }
+  
+  .form-check-input {
+    margin-left: 10px !important;
+  }
+  
+  .form-check-input:checked {
+    margin-left: 10px !important;
+    background-color: #0f101e !important;
+    border-color: #0f101e !important;
+  }
+  
+  .form-check-input:focus {
+    border-color: #0f101e !important;
+  }
+  
+  .btn-secondary {
+    background-color: #0f101e !important;
+  }
+  
+  .btn {
+    padding: 16px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn-arrow::after {
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    color: #e275ff;
+    line-height: 1;
+    margin-left: 40px;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-switch {
+    display: none;
+  }
+  
+  .switch {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 24px;
+    cursor: pointer;
+    margin-left: 10px !important;
+    transition: background-color 0.3s;
+  }
+  
+  .switch::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+  
+  input[type="checkbox"]:checked + .switch {
+    background-color: #0f101e;
+  }
+  
+  input[type="checkbox"]:checked + .switch::before {
+    transform: translateX(26px);
+  }
+  
+  .label-text {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  /* Extra Small Devices, Phones (0px to 599px) */
+  @media only screen and (min-width: 300px) and (max-width: 599px) {
+    /* Styles for small phones */
+    .calc {
+      width: 100% !important;
+    }
+  
+    .hero-countdown-wrap {
+      padding: 5px !important;
+    }
+    .brand-active2 {
+      gap: 30px;
+    }
+  
+    .tbl-content > .btn , .tbl-content > h2{
+      margin-left: 10px;
+    }
+    .faqs{
+      padding: 40px!important
+    }
+  
+    .brand-item {
+      width: 100%;
+      padding: 10px;
+  }
+  }
+  
+  /* Small Devices, Larger Phones (600px to 767px) */
+  @media only screen and (min-width: 600px) and (max-width: 767px) {
+    /* Styles for larger phones */
+    .calc {
+      width: 100% !important;
+    }
+    .hero-countdown-wrap {
+      padding: 5px !important;
+    }
+  
+    .brand-active2 {
+      gap: 30px;
+    }
+  
+    .tbl-content > .btn , .tbl-content > h2{
+      margin-left: 10px;
+    }
+  
+    .faqs{
+      padding: 100px!important
+    }
+  
+    .brand-item {
+      width: 100%;
+      padding: 10px;
+  }
+  }
+  
+  /* Medium Devices, Tablets (768px to 991px) */
+  @media only screen and (min-width: 768px) and (max-width: 819px) {
+    /* Styles for tablets */
+    .calc {
+      width: 100% !important;
+    }
+    .hero-countdown-wrap {
+      padding: 5px !important;
+    }
+    .brand-active2 {
+      gap: 30px;
+    }
+    .tbl-content > .btn {
+      margin-left: 10px;
+    }
+  
+    .faqs{
+      padding: 100px!important
+    }
+  
+    
+  }
+  
+  /* Medium Devices, Tablets (768px to 991px) */
+  @media only screen and (min-width: 820px) and (max-width: 991px) {
+    /* Styles for tablets */
+    .calc {
+      width: 100% !important;
+    }
+    .hero-countdown-wrap {
+      padding: 5px !important;
+    }
+    .brand-active2 {
+      gap: 30px;
+    }
+    .tbl-content > .btn {
+      margin-left: 10px;
+    }
+  
+    .faqs{
+      padding: 100px!important
+    }
+  }
+  
+  @media (max-width: 980px) {
+  }
+  
+  /* Large Devices, Desktops (992px to 1199px) */
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    /* Styles for desktops */
+    .hero-countdown-wrap {
+      padding: 5px !important;
+    }
+    .brand-active2 {
+      gap: 30px;
+    }
+    .tbl-content > .btn {
+      margin-left: 10px;
+    }
+  
+    .faqs{
+      padding: 100px!important
+    }
+  
+    .flex-row{
+      // flex-wrap: nowrap!important;
+    }
+  }
+  
+  /* Extra Large Devices, Large Desktops (1200px and above) */
+  @media only screen and (min-width: 1200px) {
+    /* Styles for large desktops */
+  }
+  
+  
+  /* styles.css */
+  .duration-500 {
+    transition-duration: 500ms;
+    transition: all 0.5s ease-in-out; /* Apply ease-in-out to all properties */
+  }
+  
+  
+  .hidden{
+    display: none!important;
+  }
+  
+  .filters>.form-container{
+    width: 100%!important
+  }
+  
+  .currency-selector {
+    height: 50px!important;
+    line-height: normal!important;
+    border-radius: 5px!important;
+    border: 1px solid #ccc!important;
+    text-align: left!important;
+    display: flex!important;
+    align-items: center!important;
+  }
+  
+  .btn-swirl{
+    border-radius: 0 25px!important;
+  }
+  
+  // .modal-content{
+  //   border-radius: 0 35px !important;
+  // }
+  
+  
+  .back-button{
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: right;
+  }
+  
+  .back-button-container {
+    width: 50px;
+    border-radius: 50%;
+    background: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .float-left{
+    float: left!important;
+  }
+  
+  .float-right{
+    float: right!important;
+  }
+  
+  
+  .flex-row-center{
+    display: flex;
+        align-items: center;
+        justify-content: center;
+  }
+  
+  
+  .flex-row-btw{
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+  }
+  
+  .micro-spinner {
+    // position: absolute;
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid white;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  ::-webkit-scrollbar {
+    padding-top: 5px!important;
+    height: 7px!important;
+    width: 5px!important;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1!important;
+    border-radius: 5px!important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888!important;
+    border-radius: 5px!important;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555!important;
+  }
+  
+  .font-medium{
+    font-weight: 600!important;
+  }
+  
+  .pic-background{
+    background-image: url(/assets/wp-content/uploads/sites/112/2022/11/bg-hero-v4.png)!important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.4;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    background-attachment: scroll;
+    inset: 0;
+    position: absolute;
+  }
+  
+  // background-image: url(/assets/wp-content/uploads/sites/112/2022/11/bg-hero-v4.png);
+  
+  // *:not(i){
+  //   font-family: Outfit, sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif!important;
+  // }
+  
+  // .tranx-list{
+  //   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  // }
+  
+  .flex-row-start{
+    display:flex;
+    justify-content: flex-start;
+    align-items:center;
+    gap: 10px;
+  }
+  
+  .nano-spinner-black{
+    width: 13px;
+    height: 13px;
+    border: 2px solid black;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Add spin animation if you want a spinning effect */
+  }
+  
+  .btn.btn-two:hover {
+    background: #0f101e!important;
+    color:white!important;
+  }
+  
+  .btn:not(.btn.icon){
+    background-color: #0f101e!important;
+    color:white!important;
+  }
+  
+  .btn{
+    border-radius: 10px!important;
+  }
+  
+  .card{
+    position:unset!important;
+  }
+  
+  .tranx-item:hover{
+    background: ghostwhite;
+  
+  
+  }
+  
+  .bar-spinner{
+    display: flex !important;
+  }
+  
+  .black-nano-spinner {
+    width: 13px; /* Adjust spinner size */
+    height: 13px;
+    border: 2px solid black;
+    border-top: 2px solid transparent; /* Placeholder color for the spinner, replace with spinner animation */
+    border-radius: 50%; /* Make it circular */
+    animation: spin 1s linear infinite; /* Add spin animation if you want a spinning effect */
+  }
+  
+  .nano-spinner {
+    width: 13px; /* Adjust spinner size */
+    height: 13px;
+    border: 2px solid black;
+    border-top: 2px solid transparent; /* Placeholder color for the spinner, replace with spinner animation */
+    border-radius: 50%; /* Make it circular */
+    animation: spin 1s linear infinite; /* Add spin animation if you want a spinning effect */
+  }
+  
+  .white-nano-spinner {
+    width: 13px; /* Adjust spinner size */
+    height: 13px;
+    border: 2px solid white;
+    border-top: 2px solid transparent; /* Placeholder color for the spinner, replace with spinner animation */
+    border-radius: 50%; /* Make it circular */
+    animation: spin 1s linear infinite; /* Add spin animation if you want a spinning effect */
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  // .elementor-1794 .elementor-element.elementor-element-26b0083>.elementor-background-overlay {
+  //   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.25)!important;
+  // }
+  
+  
+  
+  
+  
+  /* START TOOLTIP STYLES */
+  [tooltip] {
+    position: relative; /* opinion 1 */
+  }
+  
+  /* Applies to all tooltips */
+  [tooltip]::before,
+  [tooltip]::after {
+    text-transform: none; /* opinion 2 */
+    font-size: 0.9em; /* opinion 3 */
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+  }
+  [tooltip]::before {
+    content: "";
+    border: 5px solid transparent; /* opinion 4 */
+    z-index: 1001; /* absurdity 1 */
+  }
+  [tooltip]::after {
+    content: attr(tooltip); /* magic! */
+  
+    /* most of the rest of this is opinion */
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+  
+    /* 
+      Let the content set the size of the tooltips 
+      but this will also keep them from being obnoxious
+      */
+    min-width: 3em;
+    max-width: 21em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 1ch 1.5ch;
+    border-radius: 0.3ch;
+    box-shadow: 0 1em 2em -0.5em rgba(0, 0, 0, 0.35);
+    background: #333;
+    color: #fff;
+    z-index: 1000; /* absurdity 2 */
+    // white-space: normal; /* Allow text to wrap */
+    // word-wrap: break-word; /* Ensure wrapping */
+  }
+  
+  /* Make the tooltips respond to hover */
+  [tooltip]:hover::before,
+  [tooltip]:hover::after {
+    display: block;
+  }
+  
+  /* don't show empty tooltips */
+  [tooltip=""]::before,
+  [tooltip=""]::after {
+    display: none !important;
+  }
+  
+  /* FLOW: UP */
+  [tooltip]:not([flow])::before,
+  [tooltip][flow^="up"]::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #333;
+  }
+  [tooltip]:not([flow])::after,
+  [tooltip][flow^="up"]::after {
+    bottom: calc(100% + 5px);
+  }
+  [tooltip]:not([flow])::before,
+  [tooltip]:not([flow])::after,
+  [tooltip][flow^="up"]::before,
+  [tooltip][flow^="up"]::after {
+    left: 50%;
+    transform: translate(-50%, -0.5em);
+  }
+  
+  /* FLOW: DOWN */
+  [tooltip][flow^="down"]::before {
+    top: 100%;
+    border-top-width: 0;
+    border-bottom-color: #333;
+  }
+  [tooltip][flow^="down"]::after {
+    top: calc(100% + 5px);
+  }
+  [tooltip][flow^="down"]::before,
+  [tooltip][flow^="down"]::after {
+    left: 50%;
+    transform: translate(-50%, 0.5em);
+  }
+  
+  /* FLOW: LEFT */
+  [tooltip][flow^="left"]::before {
+    top: 50%;
+    border-right-width: 0;
+    border-left-color: #333;
+    left: calc(0em - 5px);
+    transform: translate(-0.5em, -50%);
+  }
+  [tooltip][flow^="left"]::after {
+    top: 50%;
+    right: calc(100% + 5px);
+    transform: translate(-0.5em, -50%);
+  }
+  
+  /* FLOW: RIGHT */
+  [tooltip][flow^="right"]::before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: #333;
+    right: calc(0em - 5px);
+    transform: translate(0.5em, -50%);
+  }
+  [tooltip][flow^="right"]::after {
+    top: 50%;
+    left: calc(100% + 5px);
+    transform: translate(0.5em, -50%);
+  }
+  
+  /* KEYFRAMES */
+  @keyframes tooltips-vert {
+    to {
+      opacity: 0.9;
+      transform: translate(-50%, 0);
+    }
+  }
+  
+  @keyframes tooltips-horz {
+    to {
+      opacity: 0.9;
+      transform: translate(0, -50%);
+    }
+  }
+  
+  /* FX All The Things */
+  [tooltip]:not([flow]):hover::before,
+  [tooltip]:not([flow]):hover::after,
+  [tooltip][flow^="up"]:hover::before,
+  [tooltip][flow^="up"]:hover::after,
+  [tooltip][flow^="down"]:hover::before,
+  [tooltip][flow^="down"]:hover::after {
+    animation: tooltips-vert 300ms ease-out forwards;
+  }
+  
+  [tooltip][flow^="left"]:hover::before,
+  [tooltip][flow^="left"]:hover::after,
+  [tooltip][flow^="right"]:hover::before,
+  [tooltip][flow^="right"]:hover::after {
+    animation: tooltips-horz 300ms ease-out forwards;
+  }
+  
+  
+  /* Toggle Switch Container */
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+  }
+  
+  /* Hide the default checkbox */
+  .toggle-switch input {
+    display: none;
+  }
+  
+  /* Slider (Switch Background) */
+  .toggle-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 26px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Slider (Switch Handle) */
+  .toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  
+  /* When checkbox is checked */
+  .toggle-switch input:checked+.slider {
+    background-color: #28a745;
+    /* Green background */
+  }
+  
+  .toggle-switch input:checked+.slider::before {
+    transform: translateX(24px);
+    /* Move the handle to the right */
+  }
+  
+  // .back-link {
+  //   display: inline-flex;
+  //   align-items: center;
+  //   color: #007bff;
+  //   font-weight: 500;
+  //   text-decoration: none;
+  //   transition: color 0.2s ease;
+  
+  //   svg {
+  //     margin-right: 4px;
+  //   }
+  
+  //   &:hover {
+  //     color: #0056b3;
+  //   }
+  // }
+  
+  
+  // html, body {
+  //   height: 100%!important;
+  //   margin: 0!important;
+  //   position: relative!important;
+  // }
+  
+  // .elementor-location-footer {
+  //   position: absolute!important;
+  //   bottom: 0!important;
+  //   width: 100%!important;
+  //   background: #333!important;
+  //   color: white!important;
+  //   padding: 10px!important;
+  //   text-align: center!important;
+  // }
+  
+  
+  // body.dark-mode {
+  //   background-color: #2d3436!important;
+  //   color: #dfe6e9!important;
+  // }
+  
+  // body.light-mode {
+  //   background-color: #dfe6e9!important;
+  //   color: #2d3436!important;
+  // }

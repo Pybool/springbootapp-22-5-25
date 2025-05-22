@@ -1,0 +1,1284 @@
+/* Dashboard Layout */
+// .dashboard {
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   gap: 20px;
+//   padding: 20px;
+//   background-color: whitesmoke;
+//   margin-top: 10px;
+// }
+
+.xl-only {
+  display: none!important;
+}
+
+.show-more{
+  margin:20px;
+}
+
+.nano-spinner {
+  position: absolute;
+  /* Position the spinner absolutely inside the dropdown */
+  top: 5px;
+  /* Adjust top position as needed */
+  left: 5px;
+  /* Adjust left position as needed */
+  width: 13px;
+  /* Adjust spinner size */
+  height: 13px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  /* Placeholder color for the spinner, replace with spinner animation */
+  border-radius: 50%;
+  /* Make it circular */
+  animation: spin 1s linear infinite;
+  /* Add spin animation if you want a spinning effect */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: whitesmoke;
+  margin-top: 10px;
+}
+
+.flexify {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+#svg {
+  position: absolute;
+  bottom: 0;
+  // width: 100%;
+  height: auto;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.currency-amount {
+  font-weight: 900;
+  font-size: 16px;
+  color: rgb(49, 177, 49);
+  text-align: left;
+}
+
+.debit-text {
+  color: red !important;
+}
+
+.text-green {
+  color: rgb(49, 177, 49);
+  text-align: right;
+  font-weight: 500 !important;
+}
+
+/* Card Styles */
+.card {
+  width: 50% !important;
+  padding: 20px;
+  border-radius: 10px !important;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4);
+  transition: transform 0.5s ease-in-out !important;
+  cursor: pointer;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-start {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.btn.icon {
+  width: 25px;
+  min-width: 25px;
+  height: 25px;
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #191d24;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1001;
+}
+
+.icon {
+  // width: 20px;
+  // min-width: 20px;
+  // height: 20px;
+  // min-height: 20px;
+  object-fit: contain;
+  display: block;
+  font-size:25px
+}
+
+.btn {
+  transition: transform 0.3s ease;
+  /* Add a smooth transition for the transform property */
+}
+
+.btn.rotated {
+  transform: rotate(180deg);
+  /* Rotates the entire button */
+}
+
+.dropdown {
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 170px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover {
+  color: white !important;
+}
+
+.hightlight-row {
+  background: #88beea !important;
+  --bs-table-accent-bg: #88beea !important;
+}
+
+.dropdown-menu {
+  display: block !important;
+  background-color: #fff;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  /* Ensure the menu is positioned absolutely relative to the parent */
+  left: 37% !important;
+  top: 100%;
+  /* Position it directly below the dropdown */
+  opacity: 0;
+  visibility: hidden;
+  z-index: -9999 !important;
+  /* Ensure it's above other elements */
+  width: fit-content;
+  /* Ensure it matches the width of the parent */
+}
+
+.dropdown-menu li:first-child {
+  cursor: default;
+  z-index: 9999 !important;
+  /* Ensure it's above other list items */
+}
+
+.dropdown-menu a {
+  color: #000;
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.dropdown-menu a:hover {
+  background: whitesmoke;
+  color: black;
+  padding-left: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  top: 100%;
+
+  z-index: 99999 !important;
+  /* Ensure it's on top when visible */
+  -webkit-transition: all 0.5s, background 2s 0.5s linear;
+  transition: all 0.5s, background 2s 0.5s linear;
+}
+
+.zoom {
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out !important;
+  /* Apply smooth transition for zoom */
+}
+
+/* Zoom effect on hover */
+.zoom:hover {
+  transform: scale(1.03) !important;
+  /* Zoom in the element */
+}
+
+.clipboard-init {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+img {
+  width: 30px;
+}
+
+.card.dark {
+  background-color: #1e1e2f;
+  color: #fff;
+}
+
+.card.light-green {
+  background-color: #0f101e;
+}
+
+.card.wide {
+  grid-column: span 2;
+  width: 48% !important
+}
+
+.card-content {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.popular-cards {
+  display: flex;
+  align-items: normal;
+  flex-direction: row;
+  // justify-content: space-between;
+  width: 100%;
+  // gap: 10px
+}
+
+.popular-cards>.card {
+  height: 30% !important;
+}
+
+.chart-line {
+  width: 10%;
+  background: white;
+  height: 2px;
+}
+
+.flex-row-btw {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.card-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon {
+  font-size: 24px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Chart Placeholder */
+.chart,
+.chart-bar {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(90deg, #ccc, #eee);
+  border-radius: 5px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .card.wide {
+    grid-column: span 1;
+  }
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.checkbox-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 8px;
+  background: white;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+}
+
+.g-3:not(.row)>div,
+.g-3:not(.row)>li {
+  padding: 0.5rem;
+}
+
+.g-3:not(.row) {
+  margin: -0.5rem;
+}
+
+.nk-refwg-info {
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.g-3,
+.gy-3 {
+  --bs-gutter-y: 1rem;
+}
+
+.g-3,
+.gx-3 {
+  --bs-gutter-x: 1rem;
+}
+
+.nk-refwg-info .title {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.sub-text {
+  display: block;
+  font-size: 13px;
+  color: #8094ae;
+}
+
+.g-3:not(.row)>div,
+.g-3:not(.row)>li {
+  padding: 0.5rem;
+}
+
+.nk-refwg-more {
+  position: absolute;
+  right: -4px;
+  top: -2px;
+}
+
+.dropdown,
+.dropleft,
+.dropright,
+.dropup {
+  display: inline-flex;
+}
+
+.me-n1 {
+  margin-right: -0.375rem !important;
+}
+
+.mt-n1 {
+  margin-top: -0.375rem !important;
+}
+
+.dropdown,
+.dropdown-center,
+.dropend,
+.dropstart,
+.dropup,
+.dropup-center {
+  position: relative;
+}
+
+.g-3:not(.row) {
+  margin: -0.5rem;
+}
+
+.nk-refwg-group {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.g-3,
+.gy-3 {
+  --bs-gutter-y: 1rem;
+}
+
+.g-3,
+.gx-3 {
+  --bs-gutter-x: 1rem;
+}
+
+@media (min-width: 768px) {
+  .nk-refwg .nk-refwg-stats {
+    width: 45%;
+  }
+}
+
+.nk-refwg-invite,
+.nk-refwg-stats {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .card-inner {
+    padding: 1.5rem;
+  }
+}
+
+.card-inner {
+  padding: 1.25rem;
+}
+
+.bg-lighter,
+.dual-listbox .dual-listbox__item:hover {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-lighter-rgb),
+      var(--bs-bg-opacity)) !important;
+}
+
+@media (min-width: 768px) {
+  .nk-refwg .nk-refwg-invite {
+    width: 55%;
+    border-bottom: none;
+    border-right: 1px solid #dbdfea;
+  }
+}
+
+.nk-refwg .nk-refwg-invite {
+  border-bottom: 1px solid #dbdfea;
+}
+
+.nk-refwg-invite,
+.nk-refwg-stats {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .card-inner {
+    padding: 1.5rem;
+  }
+}
+
+.card-inner {
+  padding: 1.25rem;
+}
+
+.nk-refwg {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-bordered {
+  border: 1px solid #dbdfea;
+}
+
+// Dashlite
+.lead-text+.card {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .tranx-list {
+    font-size: 1rem;
+  }
+}
+
+.tranx-list {
+  font-size: 0.8125rem;
+}
+
+.card-bordered {
+  border: 1px solid #dbdfea;
+}
+
+.card {
+  --bs-card-spacer-y: 0.75rem;
+  --bs-card-spacer-x: 1.25rem;
+  --bs-card-title-spacer-y: 0.75rem;
+  --bs-card-border-width: 0;
+  --bs-card-border-color: rgba(0, 0, 0, 0.125);
+  --bs-card-border-radius: 4px;
+  --bs-card-inner-border-radius: 3px;
+  --bs-card-cap-padding-y: 0.75rem;
+  --bs-card-cap-padding-x: 1.25rem;
+  --bs-card-cap-bg: rgba(0, 0, 0, 0.07);
+  --bs-card-bg: #fff;
+  --bs-card-img-overlay-padding: 1.25rem;
+  --bs-card-group-margin: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: var(--bs-card-height);
+  color: var(--bs-body-color);
+  word-wrap: break-word;
+  background-color: var(--bs-card-bg);
+  background-clip: border-box;
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  border-radius: var(--bs-card-border-radius);
+}
+
+.tranx-item:not(:last-child) {
+  border-bottom: 1px solid #dbdfea;
+}
+
+@media (min-width: 768px) {
+  .tranx-item {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.tranx-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.tranx-col {
+  display: inline-flex;
+  flex-direction: column;
+  width: 25% !important;
+}
+
+.tranx-col-end {
+  display: flex;
+  flex-direction: row;
+  width: 25% !important;
+  justify-content: end;
+}
+
+.tranx-list {
+  padding: 10px !important;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+@media (min-width: 768px) {
+  .tranx-list {
+    font-size: 1rem;
+  }
+}
+
+.tranx-list {
+  font-size: 0.8125rem;
+}
+
+.tranx-info {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tranx-badge {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .tranx-icon {
+    height: 44px;
+    width: 44px;
+    font-size: 24px;
+  }
+}
+
+.tranx-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 36px;
+  // width: 36px;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.lead-text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #364a63;
+  display: block;
+}
+
+.text-soft {
+  color: #8094ae !important;
+}
+
+@media (min-width: 768px) {
+  .tranx-badge+.tranx-data {
+    margin-left: 16px;
+  }
+}
+
+.tranx-badge+.tranx-data {
+  margin-left: 10px;
+}
+
+.tranx-data {
+  flex-grow: 1;
+}
+
+.tranx-label {
+  font-size: 0.9375em;
+  font-weight: 500;
+  color: #364a63;
+  margin-bottom: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .tranx-date {
+    font-size: 12px;
+  }
+
+}
+
+.tranx-date {
+  font-size: 11px;
+  color: #8094ae;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-filter {
+  margin-left: 2px !important;
+}
+
+.btn-arrow::after {
+  margin-left: 0px !important;
+  padding-left: 15px !important;
+}
+
+.dropdown {
+  // background: black;
+
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  /* Ensure relative positioning */
+  width: 170px;
+  text-align: center;
+  text-decoration: none;
+  // transform: perspective(1000px);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover {
+  color: white !important;
+}
+
+.hightlight-row {
+  background: #88beea !important;
+  --bs-table-accent-bg: #88beea !important;
+  // color: var(--bs-table-striped-color);
+}
+
+.dropdown-menu {
+  display: block !important;
+  background-color: #fff;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  /* Ensure the menu is positioned absolutely relative to the parent */
+  left: 37% !important;
+  top: 100%;
+  /* Position it directly below the dropdown */
+  opacity: 0;
+  visibility: hidden;
+  z-index: -9999 !important;
+  /* Ensure it's above other elements */
+  width: fit-content;
+  /* Ensure it matches the width of the parent */
+}
+
+.dropdown-menu li:first-child {
+  cursor: default;
+  z-index: 9999 !important;
+  /* Ensure it's above other list items */
+}
+
+.dropdown-menu a {
+  color: #000;
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.dropdown-menu a:hover {
+  background: whitesmoke;
+  color: black;
+  padding-left: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  top: 100%;
+
+  z-index: 99999 !important;
+  /* Ensure it's on top when visible */
+  -webkit-transition: all 0.5s, background 2s 0.5s linear;
+  transition: all 0.5s, background 2s 0.5s linear;
+}
+
+.listing-section {
+  margin-top: 30px;
+}
+
+.currency {
+  color: #8094ae;
+  text-transform: uppercase;
+}
+
+.flex-row>div {
+  font-weight: 700;
+}
+
+/* Overlay Styling */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  /* Dark background */
+  display: flex;
+  /* Center the content */
+  justify-content: end;
+  align-items: center;
+  z-index: 1000;
+  /* Ensure it's on top of other content */
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: transparent;
+  margin-right: 20px;
+  background: transparent;
+  border-radius: 6px;
+}
+
+.overlay-btn {
+  padding: 10px;
+  margin: 5px;
+  background-color: #1e1e2f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.overlay-btn:hover {
+  background-color: #333;
+}
+
+.overlay-content>.hdr {
+  color: black !important;
+  text-align: center;
+  // border-bottom: 2px solid darkgray;
+  font-size: larger;
+  font-weight: 600;
+  padding-bottom: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Styling for the card */
+.card {
+  position: relative;
+}
+
+.filter-text>li a {
+  font-size: 15px;
+  font-weight: 500;
+  color: white !important;
+}
+
+.filter-text>li {
+  list-style-type: none;
+  margin-right: 40px;
+}
+
+.filter-text>li>a:hover {
+  color: orange !important;
+}
+
+
+.btn.icon {
+  border-radius: 50% !important;
+}
+
+.referal-card {
+  width: 50% !important;
+}
+
+
+
+/* Extra Small Devices, Phones (0px to 599px) */
+@media only screen and (max-width: 599px) {
+  /* Styles for small phones */
+
+  .card {
+    width: 100% !important;
+    border-radius: 30px !important;
+    //   height:220px;
+  }
+
+  .card-content {
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .welcome-header {
+    display: none;
+  }
+
+  .card.wide {
+    width: 100% !important
+  }
+
+  div.flex-row-btw>h3 {
+    margin-top: 20px;
+    font-size: 1.5rem
+  }
+
+  .tranx-item {
+    flex-direction: column;
+    padding: 0px;
+    // margin-bottom: 20px;
+    border-bottom: none !important;
+  }
+
+  .tranx-col {
+    width: 100% !important;
+    padding-left: 20px;
+    margin-bottom: 10px
+  }
+
+  .tranx-col:nth-child(1) {
+    background: ghostwhite;
+    padding: 10px !important;
+  }
+
+  .tranx-col:nth-child(2) {
+    display: none !important
+  }
+
+
+
+
+
+
+}
+
+/* Small Devices, Larger Phones (600px to 767px) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  /* Styles for larger phones */
+
+  .card {
+    width: 100% !important;
+  }
+
+}
+
+/* Medium Devices, Tablets (768px to 991px) */
+@media only screen and (min-width: 768px) and (max-width: 819px) {
+  /* Styles for tablets */
+
+
+}
+
+/* Medium Devices, Tablets (768px to 991px) */
+@media only screen and (min-width: 820px) and (max-width: 991px) {
+  /* Styles for tablets */
+
+
+}
+
+@media (max-width: 980px) {}
+
+/* Large Devices, Desktops (992px to 1199px) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /* Styles for desktops */
+
+}
+
+/* Extra Large Devices, Large Desktops (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  /* Styles for large desktops */
+}
+
+
+.three-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* Space between the dots */
+  width: 100%;
+}
+
+.dot {
+  width: 10px;
+  /* Size of each dot */
+  height: 10px;
+  border-radius: 50%;
+  /* Makes the dots circular */
+  background-color: #ccc;
+  /* Default color */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for color changes */
+}
+
+.active-dot {
+  background-color: black;
+  /* Active dot color */
+  width: 12px;
+  /* Size of each dot */
+  height: 12px;
+}
+
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.active-dot {
+  animation: pulse 1s infinite;
+  /* Pulsating animation */
+}
+
+.wallet-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
+
+.wallet-actions-xl {
+  display: none;
+}
+
+.wallet-actions>.card {
+  width: 30% !important;
+  height: 75px !important;
+  border-radius: 23px !important;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px !important;
+}
+
+.recent-transactions {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.fund-inflow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #60c6503d;
+}
+
+.fund-inflow>.arrow {
+  width: 15px;
+  height: 15px;
+  transform: rotate(-45deg);
+}
+
+
+.fund-outflow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #c650503d;
+}
+
+.fund-outflow>.arrow {
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+}
+
+.eye-slash {
+  // position: relative;
+  // right: 10px;
+  // top: 13.5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.responsive-text {
+  font-size: clamp(1.75rem, 5vw, 2rem) !important;
+  /* Adjust these values to fit your needs */
+  color: #1e1e2f !important;
+  white-space: nowrap !important;
+  /* Prevent wrapping of text */
+  overflow: hidden !important;
+  /* Hide overflow if the text exceeds the container */
+  text-overflow: ellipsis !important;
+  /* Add ellipsis if text overflows */
+}
+
+.account-no{
+  color: white; 
+  white-space: nowrap;
+  margin-right:30px
+}
+
+.flex-row-btw-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+
+
+/* Extra Small Devices, Phones (0px to 599px) */
+@media only screen and (max-width: 599px) {
+  /* Styles for small phones */
+  .account-no{
+    font-size: 1.05rem;
+    margin-right: 5px;
+  }
+
+
+}
+
+/* Small Devices, Larger Phones (600px to 767px) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  /* Styles for larger phones */
+
+  .account-no{
+    font-size: 1.05rem;
+    margin-right: 5px;
+  }
+
+}
+
+/* Medium Devices, Tablets (768px to 991px) */
+@media only screen and (min-width: 768px) and (max-width: 819px) {
+  /* Styles for tablets */
+
+
+}
+
+/* Medium Devices, Tablets (768px to 991px) */
+@media only screen and (min-width: 820px) and (max-width: 991px) {
+  /* Styles for tablets */
+
+
+}
+
+@media (max-width: 980px) {}
+
+/* Large Devices, Desktops (992px to 1199px) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /* Styles for desktops */
+
+  .top-card {
+    width: 100% !important;
+  }
+
+  .wallet-actions-xl {
+    display: flex;
+    margin: 0 30px;
+  }
+
+  .wallet-actions-xl>.card {
+    height: 110px !important;
+  }
+
+  .wallet-actions-xl>.card>svg,
+  .wallet-actions-xl>.card>img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .wallet-actions-xs {
+    display: none;
+  }
+
+  .tranx-col {
+    width: 100% !important;
+  }
+
+  .recent-transactions {
+    margin-top: 0px !important;
+  }
+
+  .xl-only {
+    display: flex!important;
+  }
+
+
+
+}
+
+/* Extra Large Devices, Large Desktops (1200px and above) */
+@media only screen and (min-width: 1200px) {
+
+  /* Styles for large desktops */
+  .top-card {
+    width: 100% !important;
+  }
+
+  .wallet-actions-xl {
+    display: flex;
+    margin: 0 30px;
+  }
+
+  .wallet-actions-xl>.card {
+    height: 110px !important;
+  }
+
+  .wallet-actions-xl>.card>svg,
+  .wallet-actions-xl>.card>img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .wallet-actions-xs {
+    display: none;
+  }
+
+  .tranx-col {
+    width: 100% !important;
+  }
+
+  .recent-transactions {
+    margin-top: 0px !important;
+  }
+
+  .xl-only {
+    display: flex!important;
+  }
+
+
+}
+
+.tranx-data {
+  width: 20% !important
+}

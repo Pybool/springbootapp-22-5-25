@@ -1,0 +1,79 @@
+{
+    "status": true,
+    "message": "Agent profile fetched successfully.",
+    "data": {
+        "agent": {
+            "_id": "67e11bdc22d9e449acfab15b",
+            "organization": "67dd727ce0148d7527c40f8c",
+            "email": "ekoemmanueljavl@gmail.com",
+            "role": "agent",
+            "invitedBy": "67dd727ce0148d7527c40f8c",
+            "inviteStatus": "accepted",
+            "isAcceptingChat": false,
+            "password": "$2a$10$yapqg8RtCOpYnjz/EFDEn.hDETkxNQikCdaeFaPrv21kwtfh7J9B6",
+            "activityStatus": "active",
+            "isBot": false,
+            "timestamp": "2025-03-24T08:46:20.005Z",
+            "__v": 0
+        },
+        "agentTeams": [
+            {
+                "_id": "67e31798b22557185a903502",
+                "agent": "67e11bdc22d9e449acfab15b",
+                "team": {
+                    "_id": "67e078ac8f446aa12cf2288f",
+                    "name": "Human Resource",
+                    "organization": "67dd727ce0148d7527c40f8c",
+                    "domainGroup": {
+                        "_id": "67dff1cc6b8895db45f4227b",
+                        "slug": "localhoster-domain-group",
+                        "name": "Localhoster domain group",
+                        "domain": "http://localhost:4200",
+                        "organization": "67dd727ce0148d7527c40f8c",
+                        "description": "Just a random guess",
+                        "status": "active",
+                        "timestamp": "2025-03-23T11:34:36.261Z",
+                        "__v": 0
+                    },
+                    "description": "The human resources team will be in charge of employees within the organization",
+                    "status": "active",
+                    "timestamp": "2025-03-23T21:10:04.393Z",
+                    "__v": 0,
+                    "timezone": "Africa/Lagos",
+                    "slug": "human-resource"
+                },
+                "timestamp": "2025-03-25T20:52:40.668Z",
+                "__v": 0
+            },
+            {
+                "_id": "67e31798b22557185a903503",
+                "agent": "67e11bdc22d9e449acfab15b",
+                "team": {
+                    "_id": "67e078ac8f446aa12cf2288e",
+                    "name": "product management",
+                    "organization": "67dd727ce0148d7527c40f8c",
+                    "domainGroup": {
+                        "_id": "67dff1cc6b8895db45f4227c",
+                        "slug": "production-group",
+                        "name": "production group",
+                        "domain": "http://localhost:4200",
+                        "organization": "67dd727ce0148d7527c40f8c",
+                        "description": "Just a random guess",
+                        "status": "active",
+                        "timestamp": "2025-03-23T11:34:36.261Z",
+                        "__v": 0
+                    },
+                    "description": "The product managements team will be in charge of employees within the organization",
+                    "status": "active",
+                    "timestamp": "2025-03-23T21:10:04.393Z",
+                    "__v": 0,
+                    "timezone": "Africa/Lagos",
+                    "slug": "human-resource"
+                },
+                "timestamp": "2025-03-25T20:52:40.668Z",
+                "__v": 0
+            }
+        ]
+    },
+    "code": 200
+}

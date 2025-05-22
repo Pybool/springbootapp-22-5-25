@@ -1,0 +1,102 @@
+.spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    // margin-top: 20px;
+  }
+  
+
+  .message {
+    font-size: 18px;
+    color: #555;
+    font-weight: 700;
+  }
+
+  .checkmark {
+    width: 100px;
+    margin: 0 auto;
+    // padding-top: 20px;
+  }
+  
+  .circle {
+    -moz-animation-name: circle-animation;
+    -webkit-animation-name: circle-animation;
+    animation-name: circle-animation;
+    -moz-animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+  
+  .icon {
+    -moz-animation-name: icon-animation;
+    -webkit-animation-name: icon-animation;
+    animation-name: icon-animation;
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+  
+  @keyframes circle-animation {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes icon-animation {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+
+
+._failed i{  color:red !important;  }
+
+._success {
+    // box-shadow: 0 15px 25px #00000019;
+    // padding: 45px;
+    width: 100%;
+    text-align: center;
+    // margin: 40px auto;
+    // border-bottom: solid 4px #28a745;
+}
+
+._success i {
+    font-size: 55px;
+    color: #28a745;
+}
+
+._success h2 {
+    margin-bottom: 12px;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 10px;
+    color:black;
+}
+
+._success p {
+    margin-bottom: 0px;
+    font-size: 18px;
+    color: #495057;
+    font-weight: 500;
+}

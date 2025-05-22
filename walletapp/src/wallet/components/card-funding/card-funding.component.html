@@ -1,0 +1,31 @@
+<div style="margin-top: 100px;" *ngIf="isVisible">
+        <div 
+			class="send-money-container">
+	
+			<div class="account-section" style="margin:20px">
+				<h5 style="color:black">
+					Fund Wallet with Card
+				</h5>
+				<div class="input-container">
+					<input
+					  [(ngModel)]="amount"
+					  [value]="amount"
+					  placeholder="Enter amount to fund"
+					  id="amount"
+					  type="text"
+					/>
+					<span class="input-prefix"><strong>{{ wallet.currency }} {{ wallet.currencySymbol }}</strong></span>
+				  </div>
+				  
+				  
+				<button [disabled]="!amount || amount==0"
+					[class.disabled]="!amount || amount==0"
+					style="margin-top: 30px;"
+                    (click)="continueWithCardFunding()"
+					class="btn-two btn send-button flex-row-center">
+					<div *ngIf="showSpinner" class="micro-spinner"></div>
+					<div>Proceed</div>
+				</button>
+			</div>
+        </div>
+</div>

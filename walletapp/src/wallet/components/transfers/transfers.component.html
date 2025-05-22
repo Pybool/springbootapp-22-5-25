@@ -1,0 +1,164 @@
+<div *ngIf="isVisible"
+	class="modal">
+	<div class="modal-content">
+		<div class="flex-row-btw">
+			<div class="back-button-container float-left">
+				<button (click)="closeModal()"
+					class="back-button">
+					&larr;
+				</button>
+			</div>
+			<div class="back-button-container float-right">
+				<button (click)="sharedService.terminateModals()"
+					class="back-button">
+					&times;
+				</button>
+			</div>
+		</div>
+		<div class="tranx-list tranx-list-stretch card card-bordered"
+			style="border-radius: 0px!important; width: 100%!important;">
+			<div (click)="toggleAccountIdentification()"
+				class="tranx-item">
+				<div class="tranx-col">
+					<div class="tranx-info">
+						<div class="tranx-badge">
+							<span class="tranx-icon">
+								<img style="border-radius: 50%;width: 40px"
+									src="/assets/_images/flutterwave-logo.png">
+							</span>
+						</div>
+						<div class="tranx-data flex-col">
+							<div class="tranx-label">
+								<strong class="currency-amount">
+									Transfer a Crygoca Account
+								</strong>
+							</div>
+							<div class="text-nowrap">
+								<div>
+									Transfer to crygoca account.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="opacity: 0.3;" class="tranx-item">
+				<div class="tranx-col">
+					<div class="tranx-info">
+						<div class="tranx-badge">
+							<span class="tranx-icon">
+								<svg style="width: 33px"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 512 512">
+									<!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+									<path d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160l0 8c0 13.3 10.7 24 24 24l400 0c13.3 0 24-10.7 24-24l0-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224l-64 0 0 196.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512l448 0c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1L448 224l-64 0 0 192-40 0 0-192-64 0 0 192-48 0 0-192-64 0 0 192-40 0 0-192zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path>
+								</svg>
+							</span>
+						</div>
+						<div class="tranx-data flex-col">
+							<div class="tranx-label">
+								<strong class="currency-amount">
+									Transfer to Bank Account
+								</strong>
+							</div>
+							<div class="text-nowrap">
+								<div>
+									Transfer to a locale bank account.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="flex-row-start">
+			<h6 style="color: black;text-align: left;padding:20px">Saved Beneficiaries</h6>
+			<div *ngIf="isLoading" class="nano-spinner-black"></div>
+		</div>
+		<div style
+			class="tranx-list tranx-list-stretch card card-bordered beneficiaries"
+			style="border-radius: 0px!important; width: 100%!important;">
+			<ng-container *ngFor="let beneficiary of beneficiaries">
+				<div (click)="toggleAccountIdentification(beneficiary)" class="tranx-item">
+					<div class="tranx-col">
+						<div class="tranx-info">
+							<div class="tranx-badge">
+								<span class="tranx-icon">
+									<img
+										style="border-radius: 50%;width: 40px"
+										src="https://be.crygoca.co.uk/assets/images/anon.png"
+										alt=""
+										class="profile-image">
+
+
+								</span>
+							</div>
+							<div class="tranx-data flex-col">
+								<div class="tranx-label flex-row-btw">
+									<strong 
+										class="currency-amount">
+										{{beneficiary?.receiverWallet?.account?.username}}
+									</strong>
+									<div style="color:#ccc">
+										{{beneficiary?.receiverWallet?.walletAccountNo}}
+									</div>
+								</div>
+								<div class="text-nowrap">
+									<div *ngIf="beneficiary?.isCrygocaAccount"
+										style="color:green">
+										Transfer to crygoca account.
+									</div>
+									<div *ngIf="!beneficiary?.isCrygocaAccount">
+										Transfer to traditional account.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-container>
+
+
+
+		</div>
+		<div *ngIf="beneficiaries.length == 0"
+			style="text-align: center; color: black">
+			No results to display
+		</div>
+		<div class="show-more">
+			<button *ngIf="hasMore"
+				[disabled]="isLoading"
+				(click)="onLoadMore()"
+				class="btn btn-two">
+				<span *ngIf="isLoading">Loading...</span>
+				<span *ngIf="!isLoading">Show More</span>
+				<svg _ngcontent-ng-c149584285
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 448 512"
+					style="width: 18px; padding-left: 8px;">
+					<path _ngcontent-ng-c149584285
+						d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+						style="fill: #e275ff;"></path>
+				</svg>
+			</button>
+			<!-- Optionally, you can show a message when no more results are available -->
+			<div *ngIf="!hasMore && beneficiaries.length > 0">
+				<p>
+					No more beneficiaries to load.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- (back)="handleBackEvent()" -->
+
+<app-account-identification 
+	(back)="handleBackEvent()" 
+	[wallet]="wallet"
+	[withBeneficiaryData]="withBeneficiaryData"
+	[isVisible]="showAccountIdentification">
+</app-account-identification>

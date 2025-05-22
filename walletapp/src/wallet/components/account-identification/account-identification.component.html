@@ -1,0 +1,140 @@
+<div *ngIf="isVisible "
+	class="modal">
+	<div class="modal-content">
+		<div class="flex-row-btw">
+			<div class="back-button-container float-left">
+				<button (click)="closeModal()"
+					class="back-button">
+					&larr;
+				</button>
+			</div>
+			<div class="back-button-container float-right">
+				<button (click)="sharedService.terminateModals()"
+					class="back-button">
+					&times;
+				</button>
+			</div>
+		</div>
+		<div *ngIf="!receipientWallet && !showSuccessOrFail && !showOtpAuth"
+			class="query-account-container account-section">
+			<h5 style="color:black">
+				Transferring to Crygoca Wallet
+			</h5>
+			<input [(ngModel)]="walletId"
+				[value]="walletId"
+				(keyup)="validateAccountNumber()"
+				placeholder="Enter Wallet ID"
+				id="amount"
+				type="text">
+			<div *ngIf="!validWalletId && walletIdDirty"
+				style="color: orangered;text-align:left">
+				{{walletAccountNoErrorMsg}}
+			</div>
+			<button [disabled]="!validWalletId"
+				[class.disabled]="!validWalletId"
+				(click)="proceed()"
+				style="margin-top: 30px;"
+				class="btn-two btn send-button flex-row-center">
+				<div *ngIf="showFetchingWalletSpinner"
+					class="micro-spinner"></div>
+				<div>Proceed</div>
+			</button>
+
+
+
+		</div>
+		<div *ngIf="receipientWallet && !showSuccessOrFail && !showOtpAuth"
+			class="send-money-container">
+			<div class="profile-section">
+				<img 
+					src="https://be.crygoca.co.uk/assets/images/anon.png"
+					alt
+					class="profile-image">
+				
+				<h3 
+					style="color:black">
+					{{receipientWallet?.user?.username}}
+				</h3>
+				<p style="text-transform: capitalize;">
+					{{receipientWallet?.currency}} ({{receipientWallet?.currencySymbol}}) account
+				</p>
+				<p>
+					<strong>
+						{{receipientWallet?.walletAccountNo}}
+					</strong>
+				</p>
+				<!-- <p>
+					1 {{receipientWallet?.currency}} = {{rate}} {{receipientWallet?.user?.geoData?.currency?.code?.toUpperCase()}}
+				</p> -->
+			</div>
+
+
+
+			<div class="amount-section">
+
+
+				<div class="input-container">
+					<input [value]="displayValue"
+						[readonly]="true"
+						placeholder="Enter Amount in {{receipientWallet.currency.toUpperCase()}}"
+						id="amount"
+						type="text">
+					<span class="input-prefix">
+						<strong>
+							{{ receipientWallet.currency }} {{ receipientWallet.currencySymbol }}
+						</strong>
+					</span>
+				</div>
+			</div>
+
+
+
+			<div class="keypad">
+				<button *ngFor="let key of keys"
+					(click)="onKeyPress(key)">
+					{{ key }}
+				</button>
+				<button (click)="onDelete()">
+					<svg style="width:20px"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 576 512">
+						<!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+						<path d="M576 128c0-35.3-28.7-64-64-64L205.3 64c-17 0-33.3 6.7-45.3 18.7L9.4 233.4c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6L160 429.3c12 12 28.3 18.7 45.3 18.7L512 448c35.3 0 64-28.7 64-64l0-256zM271 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"></path>
+					</svg>
+				</button>
+			</div>
+
+
+			<div style="color: green; text-align: left;">
+				Receipient will receive {{receipientWallet?.currencySymbol}}{{receipientAmount | number:'1.2-2'}}
+			</div>
+			<div class="checkbox-container">
+				<input [(ngModel)]="saveBeneficiary"
+					(input)="toggleSaveBeneficiary()"
+					id="accepted"
+					name="accepted"
+					type="checkbox">
+				<label style="white-space: nowrap;"
+					for="accepted">
+					Save as beneficiary
+					<app-purple-spinner *ngIf="showConversionSpinner"></app-purple-spinner>
+				</label>
+			</div>
+			<button [disabled]="isNaN(Number(displayValue)!) || Number(displayValue)==0 || showConversionSpinner"
+				[class.disabled]="isNaN(Number(displayValue)!) || Number(displayValue)==0 || showConversionSpinner"
+				(click)="continueWithAuth()"
+				class="btn-two btn send-button flex-row-center">
+				<div *ngIf="continueWithAuthSpinner"
+					class="micro-spinner"></div>
+				<div>
+					Send {{receipientWallet?.currency}} {{Number(displayValue)!}}
+				</div>
+			</button>
+		</div>
+		<app-otp-auth *ngIf="showOtpAuth"
+			[payload]="transferPayload"
+			style="padding:20px;"></app-otp-auth>
+
+
+	</div>
+</div>

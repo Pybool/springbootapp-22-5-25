@@ -1,0 +1,70 @@
+<div *ngIf="!withdrawalInProgress">
+    <div class="mx-auto">
+        <p style="text-align: center; font-size: 20px;" class="mx-auto" class="pin-prompt">
+            Please enter the 4 digit otp code sent to your {{otpChannelMsg}} to complete your withdrawal
+        </p>
+    </div>
+    <app-otp-input [ngModelOptions]="{standalone: true}" #input="ngModel" [(ngModel)]="data" />
+    <br />
+    
+    <div  style="justify-content: center;" class="mx row">
+        <button (click)="submit()" [disabled]="data.length < 4" style="background: rgb(37, 26, 86) !important; width: 150px; color: white"
+          class="btn black-btn">
+            <div *ngIf="showSpinner" class="spinner-container">
+                <div class="spinner"></div>
+            </div>
+    
+            Submit
+        </button>
+    </div>
+</div>
+
+<div *ngIf="withdrawalInProgress" class="spinner-container">
+    <app-purple-spinner *ngIf="!withdrawalSuccess && !withdrawalFailed"></app-purple-spinner>
+    <div *ngIf="withdrawalSuccess" class="message-box _success">
+        <div class="checkmark">
+            <svg version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                :xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 161.2 161.2"
+                enable-background="new 0 0 161.2 161.2"
+                :xml:space="preserve">
+                <circle class="circle"
+                    fill="none"
+                    stroke="#33b057"
+                    stroke-width="7"
+                    stroke-miterlimit="10"
+                    cx="80.6"
+                    cy="80.6"
+                    r="62.1"></circle>
+                <polyline class="icon"
+                    fill="none"
+                    stroke="#33b057"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                    stroke-miterlimit="10"
+                    points="113,52.8 74.1,108.4 48.2,86.4">
+                </polyline>
+            </svg>
+        </div>
+        <h5 style="color:black">
+            Your withdrawal has been submitted and is being processed!
+        </h5>
+        <p>
+            We will inform you of your withdrawal status soon.
+        </p>
+    </div>
+    <div *ngIf="withdrawalFailed" class="message-box _success _failed">
+        <i class="fa fa-times-circle"
+            aria-hidden="true"></i>
+        <h2>Your withdrawal failed</h2>
+        <p>Try again later</p>
+        <p>{{withdrawalFailedMsg}}</p>
+    </div>
+    <p *ngIf="!withdrawalSuccess && !withdrawalFailed" class="message">Sending your otp code, please wait...</p>
+</div>
+  
+
